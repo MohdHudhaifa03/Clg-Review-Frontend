@@ -8,7 +8,7 @@ import ErrorMessage from '../components/ErrorMessage';
 import Pagination from '../components/Pagination';
 import RatingStars from '../components/RatingStars';
 import { getErrorMessage } from '../api/axios';
-import { Search, MapPin, Briefcase, Stethoscope, Landmark, TestTube, Microscope, Monitor, Scale, BookOpen } from 'lucide-react';
+import { MapPin, Briefcase, Stethoscope, Landmark, TestTube, Microscope, Monitor, Scale, BookOpen } from 'lucide-react';
 
 const CATEGORIES = [
   { name: 'Engineering', icon: Briefcase, color: 'text-blue-500', bg: 'bg-blue-100' },
@@ -44,7 +44,6 @@ export default function Colleges() {
   const [colleges, setColleges] = useState<College[]>([]);
   const [pagination, setPagination] = useState<PaginationType | null>(null);
   const [page, setPage] = useState(1);
-  const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -54,13 +53,13 @@ export default function Colleges() {
     }, 300);
     return () => clearTimeout(timeout);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page, search]);
+  }, [page]);
 
   async function loadColleges() {
     setLoading(true);
     setError('');
     try {
-      const res = await collegeApi.list({ page, limit: 9, search: search || undefined });
+      const res = await collegeApi.list({ page, limit: 9 });
       setColleges(res.data.data);
       setPagination(res.data.pagination || null);
     } catch (err) {
@@ -96,21 +95,7 @@ export default function Colleges() {
             Discover thousands of colleges and read honest reviews from real students. Find your perfect fit today.
           </p>
           
-          <div className="mt-8 relative max-w-xl">
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-              <Search className="h-5 w-5 text-gray-400" />
-            </div>
-            <input
-              type="text"
-              placeholder="Find Your College..."
-              value={search}
-              onChange={(e) => {
-                setPage(1);
-                setSearch(e.target.value);
-              }}
-              className="w-full rounded-full border-none bg-white py-4 pl-12 pr-6 text-gray-900 placeholder-gray-500 shadow-lg focus:outline-none focus:ring-2 focus:ring-secondary"
-            />
-          </div>
+
 
           <div className="mt-10 flex gap-6">
             <div className="glass rounded-xl bg-white/10 p-4 px-6 backdrop-blur-md">

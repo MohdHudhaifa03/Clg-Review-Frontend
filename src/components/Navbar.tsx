@@ -20,16 +20,6 @@ export default function Navbar({ onMenuClick, sidebarOpen }: NavbarProps) {
         >
           <Menu size={20} />
         </button>
-        <div className="relative w-full max-w-md min-w-0 flex-1">
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-            <Search className="h-4 w-4 text-muted-foreground" />
-          </div>
-          <input
-            type="text"
-            className="input pl-10 h-10 w-full min-w-0 bg-slate-50 border-slate-200 focus:bg-white text-ellipsis text-sm sm:text-base"
-            placeholder="Search colleges..."
-          />
-        </div>
       </div>
 
       <div className="flex items-center gap-4 sm:gap-6">

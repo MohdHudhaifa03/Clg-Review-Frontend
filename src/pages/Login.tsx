@@ -88,7 +88,6 @@ export default function Login() {
             <div>
               <div className="flex items-center justify-between mb-1">
                 <label className="block text-sm font-medium text-foreground">Password</label>
-                <a href="#" className="text-sm font-medium text-primary hover:underline">Forgot password?</a>
               </div>
               <Input
                 type="password"
@@ -100,7 +99,7 @@ export default function Login() {
               />
             </div>
 
-            <Button type="submit" className="w-full py-6 text-base mt-2" loading={loading}>
+            <Button type="submit" className="w-full py-4 px-12 py-4 mx-auto w-60 py-4 text-base mt-6" loading={loading}>
               Sign in
             </Button>
           </form>
@@ -116,6 +115,7 @@ export default function Login() {
             <p className="font-medium mb-1 text-indigo-700">Demo Credentials</p>
             <p>Admin: admin@example.com</p>
             <p>Student: student@example.com</p>
+            <p>Teacher: teacher@example.com</p>
             <p className="mt-1 font-medium">Password: Password123!</p>
           </div>
         </div>
